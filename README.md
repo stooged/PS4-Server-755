@@ -44,7 +44,7 @@ you can access the main page from the userguide or the consoles webbrowser.
 installation is simple you just use the arduino ide to flash the sketch/firmware to the esp8266 board.<br>
 <br>
 <b>16M (15M SPIFFS)</b> for the D1 Mini PRO<br>
-<img src=https://github.com/stooged/PS4-Server-755/blob/master/Images/16m15m_spiffs.jpg><br><br>
+<img src=https://github.com/stooged/PS4-Server-755/blob/main/Images/16m15m_spiffs.jpg><br><br>
 there is a storage limitation of <b>14.2mb</b> for the <b>D1 Mini PRO</b> board.
 
 
@@ -56,7 +56,6 @@ you can then goto <b>Config Editor</b> and change the password for the wifi ap.
 
 alternatively you can upload the files to the esp8266 with the arduino ide by selecting <b>Tools > ESP8266 Sketch Data Upload</b>
 
-<img src=https://github.com/stooged/PS4-Server-755/blob/master/Images/dataup.jpg><br><br>
+<img src=https://github.com/stooged/PS4-Server-755/blob/main/Images/dataup.jpg><br><br>
 
 the files uploaded using this method are found in the <b>data</b> folder inside the <b>PS4_Server_755</b> folder.
-
