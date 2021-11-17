@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESP Server</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="progpanel"></div>
+</body>
+<script>
+  function loadMenu(e) {
+  	window.location.href = 'menu.html';
+  }
+  
+  function loadProg(e) {
+  	var htmstr = ['<div id=\"prog\" class=\"progbar\"><span id=\"progper\">0%</span><div id=\"progani\"></div><span class=\"proglbl\">Caching Exploit Files...</span></div>'];
+	var progPanel = document.getElementById('progpanel');
+	progPanel.innerHTML = htmstr;
+  }
+  
+    function progValue(e) {
+	var progWidth = Math.round(Number(e.loaded + 1) / Number(e.total) * 100);
+	document.getElementById('progper').innerHTML = progWidth - 1 +'%';
+	document.getElementById('progani').style.width = progWidth - 1 +'%';
+  }
+  
+   window.applicationCache.addEventListener('downloading', loadProg, false);
+   window.applicationCache.addEventListener('cached',  loadMenu, false);
+   window.applicationCache.addEventListener('noupdate',  loadMenu, false);
+   window.applicationCache.addEventListener('error',  loadMenu, false);
+   window.applicationCache.addEventListener('progress', progValue, false);
+</script>
+</html>
+
+
+
