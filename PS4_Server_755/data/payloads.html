@@ -5,24 +5,25 @@
 <title>ESP Server</title>
 <link rel="stylesheet" href="style.css">
 <script>
-function setpayload(payload)
+function setpayload(payload,title)
 {
    sessionStorage.setItem('payload', payload);
+   sessionStorage.setItem('title', title);
+   window.open("loader.html", "_self");
 }
 if (sessionStorage.getItem('payload')) {
-   var payload = sessionStorage.getItem('payload');
-   window.open(payload, "_self");
+   window.open("loader.html", "_self");
 } 
 </script>
 </head>
 <body>
 <center>
 <h1>7.55 Payloads</h1>
-<a href="mira.html" target="_self" onclick="setpayload('mira.html')"><button class="btn">Mira</button></a>&nbsp;
-<a href="ghen.html" target="_self" onclick="setpayload('ghen.html')"><button class="btn">GoldHen</button></a>&nbsp;
+<a onclick="setpayload('mira.js','Mira')"><button class="btn">Mira</button></a>&nbsp;
+<a onclick="setpayload('ghen.js','GoldHEN')"><button class="btn">GoldHEN v1.1</button></a>&nbsp;
 <p></p>
-<a href="app2.html" target="_self" onclick="setpayload('app2.html')"><button class="btn"> AppToUsb</button></a>&nbsp;
-<a href="history.html" target="_self" onclick="setpayload('history.html')"><button class="btn">History Blocker</button></a>&nbsp;
+<a onclick="setpayload('app2.js','App2USB')"><button class="btn"> AppToUsb</button></a>&nbsp;
+<a onclick="setpayload('history.js','History Blocker')"><button class="btn">History Blocker</button></a>&nbsp;
 </center>
 </body>
 </html>

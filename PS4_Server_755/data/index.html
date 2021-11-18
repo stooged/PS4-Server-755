@@ -9,6 +9,7 @@
 <div id="progpanel"></div>
 </body>
 <script>
+
   function loadMenu(e) {
   	window.location.href = 'menu.html';
   }
@@ -19,7 +20,7 @@
 	progPanel.innerHTML = htmstr;
   }
   
-    function progValue(e) {
+    function progEvent(e) {
 	var progWidth = Math.round(Number(e.loaded + 1) / Number(e.total) * 100);
 	document.getElementById('progper').innerHTML = progWidth - 1 +'%';
 	document.getElementById('progani').style.width = progWidth - 1 +'%';
@@ -29,7 +30,7 @@
    window.applicationCache.addEventListener('cached',  loadMenu, false);
    window.applicationCache.addEventListener('noupdate',  loadMenu, false);
    window.applicationCache.addEventListener('error',  loadMenu, false);
-   window.applicationCache.addEventListener('progress', progValue, false);
+   window.applicationCache.addEventListener('progress', progEvent, false);
 </script>
 </html>
 

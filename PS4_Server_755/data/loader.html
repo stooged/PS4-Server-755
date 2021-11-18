@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>History Blocker</title>
+<title>ESP Server</title>
 </head>
 <body onload="go()">
 <script>
 function print(){}
-let textNode = document.createTextNode("Loading: History Blocker...");
+let textNode = document.createTextNode("Loading: " + sessionStorage.getItem('title') + "...");
 let node = document.createElement("p").appendChild(textNode);
 document.body.appendChild(node);
 document.body.appendChild(document.createElement("br"));
@@ -31,13 +31,9 @@ function done() {
 }
 
 window.midExploit = function() {
-  var scripts = ['./blob.js', './jb.js'];
-  scripts.push('./loader.js');
-  scripts.push('./history.js');
-  scripts.push('./netcat.js');
+  var scripts = ['./blob.js', './jb.js', './loader.js', './' + sessionStorage.getItem('payload'), './netcat.js'];
   preloadScripts(scripts, go);
 }
-
 window.postExploit = function() {
   setTimeout(function() {
     eval.call(window, scriptCode);

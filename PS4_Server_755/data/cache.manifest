@@ -3,6 +3,7 @@ style.css
 index.html
 menu.html
 payloads.html
+loader.html
 blob.js
 int64.js
 jb.js
@@ -10,11 +11,7 @@ loader.js
 ps4.js
 utils.js
 netcat.js
-mira.html
 mira.js
-app2.html
 app2.js
-history.html
 history.js
-ghen.html
 ghen.js
