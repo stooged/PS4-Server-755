@@ -21,7 +21,7 @@
   }
   
     function progEvent(e) {
-	var progWidth = Math.round(Number(e.loaded + 1) / Number(e.total) * 100);
+	var progWidth = Math.round(Number(e.loaded + 1) / Number(e.total + 1) * 100);
 	document.getElementById('progper').innerHTML = progWidth - 1 +'%';
 	document.getElementById('progani').style.width = progWidth - 1 +'%';
   }

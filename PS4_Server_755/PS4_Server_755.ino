@@ -121,6 +121,11 @@ bool loadFromSdCard(String path) {
  {
   return false;
  }
+ if (path.endsWith("cache.manifest"))
+ {
+  handleCacheManifest();
+  return true;
+ }
   if (path.endsWith("/")) {
     path += "index.html";
   }
@@ -504,6 +509,26 @@ void handleRebootHtml()
   String htmStr = "<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>ESP Reboot</title><style type=\"text/css\">#loader {  z-index: 1;   width: 50px;   height: 50px;   margin: 0 0 0 0;   border: 6px solid #f3f3f3;   border-radius: 50%;   border-top: 6px solid #3498db;   width: 50px;   height: 50px;   -webkit-animation: spin 2s linear infinite;   animation: spin 2s linear infinite; } @-webkit-keyframes spin {  0%  {  -webkit-transform: rotate(0deg);  }  100% {  -webkit-transform: rotate(360deg); }}@keyframes spin {  0% { transform: rotate(0deg); }  100% { transform: rotate(360deg); }} body { background-color: #1451AE; color: #ffffff; font-size: 20px; font-weight: bold; margin: 0 0 0 0.0; padding: 0.4em 0.4em 0.4em 0.6em;}   input[type=\"submit\"]:hover { background: #ffffff; color: green; }input[type=\"submit\"]:active { outline-color: green; color: green; background: #ffffff; } #msgfmt { font-size: 16px; font-weight: normal;}#status { font-size: 16px;  font-weight: normal;} </style><script>function statusRbt() { var answer = confirm(\"Are you sure you want to reboot?\");  if (answer) {document.getElementById(\"reboot\").style.display=\"none\";   document.getElementById(\"status\").innerHTML = \"<div id='loader'></div><br>Rebooting ESP Board\"; return true;  }else {   return false;  }}</script></head><body><center><form action=\"/reboot.html\" method=\"post\"><p>ESP Reboot<br><br></p><p id=\"msgrbt\">This will reboot the esp board</p><div><p id=\"status\"></p><input id=\"reboot\" type=\"submit\" value=\"Reboot ESP\" onClick=\"return statusRbt();\" style=\"display: block;\"></div></form><center></body></html>";
   webServer.setContentLength(htmStr.length());
   webServer.send(200, "text/html", htmStr);
+}
+
+
+void handleCacheManifest() {
+  String output = "CACHE MANIFEST\r\n";
+  Dir dir = SPIFFS.openDir("/");
+  while(dir.next()){
+    File entry = dir.openFile("r");
+    String fname = String(entry.name()).substring(1);
+    if (fname.length() > 0 && !fname.equals("config.ini"))
+    {
+      if (fname.endsWith(".gz")) {
+        fname = fname.substring(0, fname.length() - 3);
+      }
+     output += fname + "\r\n";
+    }
+    entry.close();
+  }
+  webServer.setContentLength(output.length());
+  webServer.send(200, "text/cache-manifest", output);
 }
 
 
