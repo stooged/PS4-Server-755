@@ -1,11 +1,10 @@
 # PS4 Server 7.55
 
-This is a project designed for the <a href=https://www.wemos.cc/en/latest/d1/d1_mini_pro.html>esp8266 D1 Mini PRO</a> or other 16mb esp8266 boards to provide a wifi http server and dns server.
+This is a project designed for the <a href=https://www.wemos.cc/en/latest/d1/d1_mini.html>esp8266 D1 Mini</a> or the <a href=https://www.wemos.cc/en/latest/d1/d1_mini_pro.html>esp8266 D1 Mini PRO</a> to provide a wifi http server and dns server.
+
 
 the 7.55 exploit seems to have issues with serving the files from the esp device so with this project i have decided to use the <a href=https://en.wikipedia.org/wiki/Cache_manifest_in_HTML5>cache</a> function.<br>
 on the first load of the main page the exploit files will all be stored on the console and then the esp device can be removed.
-
-due to the size of the exploit files </b>you must use a esp8266 board that has 16mb of storage</b>.
 
 the firmware is updatable via http and the exploit files can be managed via http.
 
@@ -43,11 +42,16 @@ you can access the main page from the userguide or the consoles webbrowser.
 
 installation is simple you just use the arduino ide to flash the sketch/firmware to the esp8266 board.<br>
 <br>
+make sure you set the flash size to match the D1 board you are using.
+4M (3M SPIFFS) for the D1 Mini
+<img src=https://github.com/stooged/PS4-Server-755/blob/main/Images/4m3m_spiffs.jpg><br><br>
+there is a storage limitation of <b>2.8mb</b> for the <b>D1 Mini</b> board.
+
 <b>16M (15M SPIFFS)</b> for the D1 Mini PRO<br>
 <img src=https://github.com/stooged/PS4-Server-755/blob/main/Images/16m15m_spiffs.jpg><br><br>
 there is a storage limitation of <b>14.2mb</b> for the <b>D1 Mini PRO</b> board.
 
-
+<br><br>
 next you connect to the wifi access point with a pc/laptop, <b>PS4_WEB_AP</b> is the default SSID and <b>password</b> is the default password.<br>
 then use a webbrowser and goto http://10.1.1.1/admin.html <b>10.1.1.1</b> is the defult webserver ip.<br>
 on the side menu of the admin page select <b>File Uploader</b> and then click <b>Select Files</b> and locate the <b>data</b> folder inside the <b>PS4_Server_755</b> folder in this repo and select all the files inside the <b>data</b> folder and click <b>Upload Files</b>

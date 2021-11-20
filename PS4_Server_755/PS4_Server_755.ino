@@ -135,6 +135,13 @@ bool loadFromSdCard(String path) {
     path.replace("/document/" + split(path,"/document/","/ps4/") + "/ps4/", "/");
   }
   String dataType = getContentType(path);
+  
+  if (path.endsWith("jb.js") || path.endsWith("mira.js") || path.endsWith("netcat.js") || path.endsWith("app2.js")  
+    || path.endsWith("blob.js") || path.endsWith("ghen.js") || path.endsWith("history.js") || path.endsWith("int64.js") 
+    || path.endsWith("loader.js") || path.endsWith("ps4.js") || path.endsWith("utils.js")) {
+    path = path + ".gz";
+  }
+  
   File dataFile = SPIFFS.open(path, "r");
   if (!dataFile) {
      if (path.endsWith("index.html") || path.endsWith("index.htm"))
