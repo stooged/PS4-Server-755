@@ -136,9 +136,7 @@ bool loadFromSdCard(String path) {
   }
   String dataType = getContentType(path);
   
-  if (path.endsWith("jb.js") || path.endsWith("mira.js") || path.endsWith("netcat.js") || path.endsWith("app2.js")  
-    || path.endsWith("blob.js") || path.endsWith("ghen.js") || path.endsWith("history.js") || path.endsWith("int64.js") 
-    || path.endsWith("loader.js") || path.endsWith("ps4.js") || path.endsWith("utils.js")) {
+  if (path.endsWith(".js")) {
     path = path + ".gz";
   }
   
