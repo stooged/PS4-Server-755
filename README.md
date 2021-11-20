@@ -43,7 +43,7 @@ you can access the main page from the userguide or the consoles webbrowser.
 installation is simple you just use the arduino ide to flash the sketch/firmware to the esp8266 board.<br>
 <br>
 make sure you set the flash size to match the D1 board you are using.<br>
-4M (3M SPIFFS) for the D1 Mini
+4M (3M SPIFFS) for the D1 Mini<br>
 <img src=https://github.com/stooged/PS4-Server-755/blob/main/Images/4m3m_spiffs.jpg><br><br>
 there is a storage limitation of <b>2.8mb</b> for the <b>D1 Mini</b> board.
 
